@@ -8,22 +8,26 @@
 */
 
 import java.util.Scanner;
-import java.util.Random;
+/**
+* This is the Dice program.
+*/
 
 final class Dice {
     /**
-    * Variables used for maximum and minimum values
-    * Of the dice.
+    * Variables used for maximum and minimum values.
+    * Of the dice
     */
     static final int MAX = 6;
+
     /**
-    * Variable 2
+    * Variable 2.
     */
     static final int MIN = 1;
+
     /**
     * Prevent instantiation.
     * Throw an exception IllegalStateException.
-    * if this ever is called
+    * If this ever is called
     *
     * @throws IllegalStateException
     *
@@ -42,30 +46,27 @@ final class Dice {
     public static void main(final String[] args) {
         int tries = 0;
         int guess = 0;
-        int random_int = (int)Math.floor(Math.random()*(MAX-MIN+1)+MIN);
-        System.out.println(random_int);
-        Scanner attempt = new Scanner(System.in);
+        final int random = (int) Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
+        System.out.println(random);
+        final Scanner attempt = new Scanner(System.in);
         while (true) {
             System.out.print("\nGuess a number between 1 and 6: ");
             try {
                 guess = attempt.nextInt();
-            }
-            catch (java.util.InputMismatchException errorCode) {
+            } catch (java.util.InputMismatchException errorCode) {
                 System.out.print("That isn't a viable option.");
                 break;
             }
             tries = tries + 1;
-            if (guess > random_int) {
+            if (guess > random) {
                 System.out.print("Too high, try again.");
-            }
-            else if (guess < random_int){
+            } else if (guess < random) {
                 System.out.print("Too low, try again.");
-            }
-            else {
+            } else {
                 System.out.print("You got it right in " + tries + " guesses.");
                 break;
             }
-            }
+        }
         System.out.print("\nDone.");
-}
+    }
 }
